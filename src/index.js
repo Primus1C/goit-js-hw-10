@@ -26,38 +26,37 @@ const select = new SlimSelect({
 
 //console.log(select);
 
-showLoader(false);
+showElement(refs.catInfo, false);
+showElement(refs.selectArea, false);
+showElement(refs.loaderArea);
+showElement(refs.errorText, false);
+
 fetchBreeds().then(data => {
   const dataSet = data.map(breed => {
     return { value: breed.id, text: breed.name };
   });
   select.setData(dataSet);
 });
-hideLoader();
+
+showElement(refs.selectArea);
+showElement(refs.loaderArea, false);
 
 function onBreedSelected(evt) {
-  showLoader(true);
+  showElement(refs.catInfo, false);
+  showElement(refs.loaderArea);
   fetchCatByBreed(select.getSelected()).then(data => {
     const c = data[0];
     const b = c.breeds[0];
     refs.catInfo.innerHTML = `<h2>${b.name}</h2><h3>Origin: ${b.origin}</h3><img src="${c.url}" alt="${b.name}" width="400px"><h3>Temperament:  ${b.temperament}</h3><p>${b.description}</p><p>Life span: ${b.life_span}</p><a href="${b.wikipedia_url}">Wikipedia</a><p><a href="${b.vetstreet_url}">Vetstreet</a></p><p><a href="${b.vcahospitals_url}">Animal hospital</a></p>`;
+    showElement(refs.catInfo);
   });
-  hideLoader();
+  showElement(refs.loaderArea, false);
 }
 
-function showLoader(queryCatInfo) {
-  console.log('show');
-  if (queryCatInfo) {
-    refs.catInfo.classList.add('hidden');
+function showElement(element,show=true) {
+  if (show) {
+    element.classList.remove('hidden');  
   } else {
-    refs.selectArea.classList.add('hidden');
-  }
-  refs.loaderArea.classList.remove('hidden');
-}
-
-function hideLoader() {
-  console.log('hide');
-  refs.selectArea.classList.remove('hidden');
-  refs.catInfo.classList.remove('hidden');
-  //refs.loaderArea.classList.add('hidden');
+    element.classList.add('hidden'); 
+  } 
 }
