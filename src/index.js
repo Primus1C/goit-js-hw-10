@@ -6,10 +6,10 @@ import { fetchCatByBreed } from './cat-api';
 const refs = {
   catInfo: document.querySelector('.cat-info'),
   selectArea: document.querySelector('.container-select'),
-  loaderText: document.querySelector('.loader'),
+  loaderArea: document.querySelector('.container-loader'),
   errorText: document.querySelector('.error'),
 };
-console.log(refs);
+//console.log(refs);
 
 const select = new SlimSelect({
   select: '.breed-select',
@@ -17,6 +17,7 @@ const select = new SlimSelect({
   settings: {
     placeholderText: 'Select a cat breed',
     hideSelected: true,
+    allowDeselect: true,
   },
   events: {
     afterChange: onBreedSelected,
@@ -45,16 +46,18 @@ function onBreedSelected(evt) {
 }
 
 function showLoader(queryCatInfo) {
+  console.log('show');
   if (queryCatInfo) {
     refs.catInfo.classList.add('hidden');
   } else {
-    //refs.select.classList.add('hidden');
+    refs.selectArea.classList.add('hidden');
   }
-  refs.loaderText.classList.remove('hidden');
+  refs.loaderArea.classList.remove('hidden');
 }
 
 function hideLoader() {
-  //refs.select.classList.remove('hidden');
+  console.log('hide');
+  refs.selectArea.classList.remove('hidden');
   refs.catInfo.classList.remove('hidden');
-  refs.loaderText.classList.add('hidden');
+  //refs.loaderArea.classList.add('hidden');
 }

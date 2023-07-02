@@ -1,5 +1,41 @@
+body {
+    background-color: bisque;
+}
+
 .hidden {
     /* visibility: hidden; */
     display: none;
 }
 
+.pulsing-2 {
+    left: 50%;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgb(179, 122, 54);
+    box-shadow: 0 0 0 0 rgba(131, 83, 45, 0.267);
+    animation: pl2 1.5s infinite linear;
+    position: relative;
+}
+
+.pulsing-2:before,
+.pulsing-2:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 #0004;
+    animation: inherit;
+    animation-delay: -0.5s;
+}
+
+.pulsing-2:after {
+    animation-delay: -1s;
+}
+
+@keyframes pl2 {
+    100% {
+        box-shadow: 0 0 0 40px #0000
+    }
+}
