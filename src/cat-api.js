@@ -1,10 +1,13 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+const axios = require('axios');
+
 axios.defaults.headers.common['x-api-key'] =
   'live_YGWRPlgbj8PJkdp9R68mzE5AJ1W7whcwqQBldfENQlehOrKyZKTx11u2KgAJW1oi';
 
-const axios = require('axios');
+
+
 const baseURL = 'https://api.thecatapi.com/v1';
 
 export function fetchBreeds() {

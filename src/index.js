@@ -23,7 +23,6 @@ const select = new SlimSelect({
     afterChange: onBreedSelected,
   },
 });
-
 //console.log(select);
 
 showElement(refs.catInfo, false);
@@ -54,6 +53,7 @@ function onBreedSelected(evt) {
 }
 
 function showElement(element,show=true) {
+  //console.log('SHOW=', show, element);
   if (show) {
     element.classList.remove('hidden');  
   } else {
