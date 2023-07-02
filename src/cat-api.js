@@ -9,7 +9,8 @@ const axios = require('axios');
 const baseURL = 'https://api.thecatapi.com/v1';
 
 export function fetchBreeds() {
-  return axios
+
+  request =  axios
     .get(`${baseURL}/breeds`)
     .then(response => {
       //console.log('Data',response.data);
@@ -19,10 +20,11 @@ export function fetchBreeds() {
       //console.log(error);
       Notiflix.Notify.failure(error.message);
     });
+  return request;
 }
 
 export function fetchCatByBreed(breedId) {
-  return axios
+  request = axios
     .get(`${baseURL}/images/search?breed_ids=${breedId}`)
     .then(response => {
       return response.data;
@@ -31,4 +33,5 @@ export function fetchCatByBreed(breedId) {
       //console.log('error',error);
       Notiflix.Notify.failure(error.message);
     });
+  return request;
 }
