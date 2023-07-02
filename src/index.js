@@ -13,7 +13,6 @@ const refs = {
 
 const select = new SlimSelect({
   select: '.breed-select',
-  /*data: [{ text: 'Value 1', value: 'value1' }],*/
   settings: {
     placeholderText: 'Select a cat breed',
     hideSelected: true,
@@ -54,7 +53,7 @@ function onBreedSelected(evt) {
 
 function showElement(element,show=true) {
   //console.log('SHOW=', show, element);
-  if (show) {
+  if (show===true) {
     element.classList.remove('hidden');  
   } else {
     element.classList.add('hidden'); 
