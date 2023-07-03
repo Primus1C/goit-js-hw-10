@@ -8,7 +8,7 @@ const baseURL = 'https://api.thecatapi.com/v1';
 
 export function fetchBreeds() {
 
-  request =  axios
+  const request =  axios
     .get(`${baseURL}/breeds`)
     .then(response => {
       //console.log('Data',response.data);
@@ -22,7 +22,7 @@ export function fetchBreeds() {
 }
 
 export function fetchCatByBreed(breedId) {
-  request = axios
+  const request = axios
     .get(`${baseURL}/images/search?breed_ids=${breedId}`)
     .then(response => {
       return response.data;
