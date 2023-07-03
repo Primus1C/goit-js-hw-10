@@ -28,12 +28,16 @@ showElement(refs.selectArea, false);
 showElement(refs.loaderArea);
 showElement(refs.errorText, false);
 
-fetchBreeds().then(data => {
-  const dataSet = data.map(breed => {
-    return { value: breed.id, text: breed.name };
+fetchBreeds()
+  .then(data => {
+    const dataSet = data.map(breed => {
+      return { value: breed.id, text: breed.name };
+    });
+    select.setData(dataSet);
+  })
+  .catch(error => {
+    Notiflix.Notify.failure(error.message);
   });
-  select.setData(dataSet);
-});
 
 showElement(refs.selectArea);
 
@@ -45,7 +49,10 @@ function onBreedSelected(evt) {
     const b = c.breeds[0];
     refs.catInfo.innerHTML = `<h2>${b.name}</h2><h3>Origin: ${b.origin}</h3><img src="${c.url}" alt="${b.name}" width="400px"><h3>Temperament:  ${b.temperament}</h3><p>${b.description}</p><p>Life span: ${b.life_span}</p><a href="${b.wikipedia_url}">Wikipedia</a><p><a href="${b.vetstreet_url}">Vetstreet</a></p><p><a href="${b.vcahospitals_url}">Animal hospital</a></p>`;
     showElement(refs.catInfo);
-  });
+  })
+    .catch(error => {
+      Notiflix.Notify.failure(error.message);
+    });
   showElement(refs.loaderArea,false);
 }
 
