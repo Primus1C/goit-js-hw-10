@@ -27,12 +27,17 @@ const API_KEY =
   'live_uPAbgvOj5WRxm08mP9aix5kJU4fWe1265ayGmXdj9j6ShUPbrmokXYHhIKbkxXGw';
 
 function fetchBreeds() {
-  return fetch(`${BASE_URL}/breeds?api_key=${API_KEY}`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
+  return fetch(`${BASE_URL}/breeds?api_key=${API_KEY}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    })
+    /* .then(data => {
+      console.log(data);
+    })
+    .catch(); */
 }
 
 function fetchCatByBreed(breedId) {
