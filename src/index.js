@@ -1,4 +1,5 @@
 import SlimSelect from 'slim-select';
+import Notiflix from 'notiflix';
 import 'slim-select/dist/slimselect.css';
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
 
@@ -38,7 +39,7 @@ fetchBreeds()
     showElement(refs.loaderArea, false);
   })
   .catch(error => {
-    Notiflix.Notify.failure(error.message);
+    Notiflix.Notify.failure(`Oops! Something went wrong! Try reloading the page! (Error ${error.message})`);
     showElement(refs.loaderArea, false);
   });
 
